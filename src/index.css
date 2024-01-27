@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #202142;
+  background-color: rgb(64, 121, 87);
   color: #fff;
   line-height: 1.6;
 }
@@ -21,6 +21,9 @@ ul {
   max-width: 768px;
   margin: auto;
   padding: 0 20px;
+}
+.container a{
+  color: antiquewhite ;
 }
 
 header {
@@ -37,13 +40,13 @@ header {
   color: #333;
   border-radius: 15px;
   padding: 40px 50px;
-  margin: 20px 0;
+  margin: 10px;
   position: relative;
 }
 
 .card.reverse {
   background-color: rgba(0, 0, 0, 0.4);
-  color: #fff;
+  color: antiquewhite;
 }
 
 .card h2 {
@@ -62,7 +65,7 @@ header {
 .rating li,
 .num-display {
   position: relative;
-  background: #f4f4f4;
+  background: rgb(64, 121, 87);
   width: 50px;
   height: 50px;
   padding: 10px;
@@ -87,8 +90,8 @@ header {
 
 .rating li:hover,
 .num-display {
-  background: #ff6a95;
-  color: #fff;
+  background: antiquewhite;
+  color: rgba(64, 121, 87, 0.9);
 }
 
 [type='radio'] {
@@ -96,8 +99,8 @@ header {
 }
 
 [type='radio']:checked ~ label {
-  background: #ff6a95;
-  color: #fff;
+  background: antiquewhite;
+  color: rgb(64, 121, 87);
 }
 
 .input-group {
@@ -112,6 +115,8 @@ input {
   flex-grow: 2;
   border: none;
   font-size: 16px;
+  margin-right: 5px;
+  border-radius: 5px;
 }
 
 input:focus {
@@ -119,10 +124,11 @@ input:focus {
 }
 
 .feedback-stats {
-  color: #fff;
+  color: antiquewhite;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 5px;
 }
 
 .num-display {
@@ -149,18 +155,20 @@ input:focus {
   color: #fff;
   border: 0;
   border-radius: 8px;
-  color: #fff;
   width: 100px;
   height: 40px;
   cursor: pointer;
 }
 
 .btn-primary {
-  background-color: #202142;
+  background-color: rgb(64, 121, 87);
+  color: antiquewhite;
+  
 }
 
 .btn-secondary {
-  background: #ff6a95;
+  background: antiquewhite;
+  color: rgb(64, 121, 87);
 }
 
 .btn:hover {
@@ -169,8 +177,8 @@ input:focus {
 }
 
 .btn:disabled {
-  background-color: #cccccc;
-  color: #333;
+  background-color: rgba(64, 121, 87, 0.3);
+  color: #000;
   cursor: auto;
 }
 
@@ -182,7 +190,7 @@ input:focus {
 .message {
   padding-top: 10px;
   text-align: center;
-  color: rebeccapurple;
+  color: antiquewhite;
 }
 
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
