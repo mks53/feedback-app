@@ -10,10 +10,11 @@ function FeedBackForm() {
   const [rating, setRating] = useState(10);
   const [msg, setMsg] = useState("");
 
-  const { addFeedback, feedbackEdit } = useContext(FeedbackContext);
+  const { addFeedback, feedbackEdit, updateFeedback } =
+    useContext(FeedbackContext);
 
   useEffect(() => {
-    if (feedbackEdit.edit) {
+    if (feedbackEdit.edit === true) {
       setBtnDisabled(false);
       setText(feedbackEdit.item.text);
       setRating(feedbackEdit.item.rating);
@@ -42,8 +43,11 @@ function FeedBackForm() {
         text,
         rating,
       };
-      addFeedback(newFeedback);
-
+      if (feedbackEdit.edit === true) {
+        updateFeedback(feedbackEdit.item.id, newFeedback);
+      } else {
+        addFeedback(newFeedback);
+      }
       setText("");
     }
   };
@@ -59,6 +63,7 @@ function FeedBackForm() {
             onChange={handleTextChange}
             required
             placeholder="Write a review"
+            value={text}
           />
           <Button isDisabled={btnDisabled} type="submit">
             Add Review

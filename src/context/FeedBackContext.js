@@ -1,31 +1,41 @@
-import { createContext, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import FeedbackData from "../data/FeedBackData";
+import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
-  const [feedback, setFeedback] = useState([
-    {
-      id: 1,
-      rating: 7,
-      text: "This is the first feedback",
-    },
-    {
-      id: 2,
-      rating: 5,
-      text: "This is the second feedback",
-    },
-    {
-      id: 3,
-      rating: 9,
-      text: "This is the third feedback",
-    },
-  ]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [feedback, setFeedback] = useState([]);
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
     edit: false,
   });
+
+  useEffect(() => {
+    fetchFeedback();
+  }, []);
+
+  const fetchFeedback = async () => {
+    const response = await fetch(`http://localhost:5000/feedback`);
+    const data = await response.json();
+
+    setFeedback(data);
+    setIsLoading(false);
+  };
+
+  //Adds Feedback
+  const addFeedback = async (newFeedback) => {
+    const response = await fetch("http://localhost:5000/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newFeedback),
+    });
+
+    const data = await response.json();
+
+    setFeedback([data, ...feedback]);
+  };
 
   //Deletes Feedback
   const deleteFeedback = (id) => {
@@ -34,10 +44,12 @@ export const FeedbackProvider = ({ children }) => {
     }
   };
 
-  //Adds Feedback
-  const addFeedback = (newFeedback) => {
-    newFeedback.id = uuidv4();
-    setFeedback([newFeedback, ...feedback]);
+  const updateFeedback = (id, updatedItem) => {
+    setFeedback(
+      feedback.map((item) =>
+        item.id === id ? { ...item, ...updatedItem } : item
+      )
+    );
   };
 
   //Set item to be updated
@@ -52,10 +64,12 @@ export const FeedbackProvider = ({ children }) => {
     <FeedbackContext.Provider
       value={{
         feedback,
+        feedbackEdit,
+        isLoading,
         deleteFeedback,
         addFeedback,
         editFeedback,
-        feedbackEdit,
+        updateFeedback,
       }}>
       {children}
     </FeedbackContext.Provider>
