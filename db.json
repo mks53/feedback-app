@@ -1,24 +1,19 @@
 {
   "feedback": [
     {
-      "id": 1,
-      "rating": 10,
-      "text": "This text is from JSON-Server"
-    },
-    {
-      "id": 2,
-      "rating": 7,
-      "text": "This text is from backend server"
-    },
-    {
-      "id": 3,
-      "rating": 8,
-      "text": "This text is 3rd text"
-    },
-    {
       "id": "5021",
       "text": "This is the new feedback which will be saved in json server",
       "rating": 8
+    },
+    {
+      "id": "a3c0",
+      "text": "New feedback",
+      "rating": 10
+    },
+    {
+      "id": "aa18",
+      "text": "Brad Traversy React Front to Back Course ",
+      "rating": 9
     }
   ]
 }
